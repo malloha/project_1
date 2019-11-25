@@ -3,28 +3,26 @@
 
 <head>
   <title>#FollowMeTo | CityWalk App</title>
-
-
-  <!-- <link rel="stylesheet" href="css/style.css">  -->
+  <link href="https://fonts.googleapis.com/css?family=Fjalla+One&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
   <header>
-
     <h1>
       #FollowMeTo
     </h1>
-    <h2>Enter the Name of a city to create a CityWalk<h2>
   </header>
   <form>
-    <input type=text value="" name="city" placeholder="Enter City Name" id="city">
-    <input type=text value="" placeholder="Enter Time in Minutes" id="time">
-    <button type="submit" id="getCity">Create City Walk</button>
+    <h2>Enter the Name of a city to create a CityWalk<h2>
+        <input type=text value="" name="city" placeholder="Enter City Name" id="city">
+        <input type=text value="" placeholder="Enter Time in Minutes" id="time">
+        <button type="submit" id="getCity">Create City Walk</button>
   </form>
 
 
   <section>
-    <div>
+    <div class="results-container">
     </div>
   </section>
   <script src="main.js" type="text/javascript" charset="utf-8" async defer></script>
