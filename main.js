@@ -11,6 +11,7 @@ const resultContainer = document.querySelector('.slideshow-container')
 let slideIndex = 1;
 const prevButton = document.createElement('a')
 const nextButton = document.createElement('a')
+const dotToDot = document.querySelector(".doting");
 
 window.onload = function () {
   const url = `${baseUrl}${cityInput.value}&total_time=${timeInput.value}`;
@@ -24,9 +25,11 @@ window.onload = function () {
     const result = await axios.get(url, { headers: { "X-Triposo-Account": 'QGPSD9G3', "X-Triposo-Token": 'tsrpze8uo75pra7bmbbnrenn18mda8st' } });
     //  console.log(result.data.results[0].way_points[0])
     resultContainer.innerHTML = ""
-    //   dotToDot.innerHTML = ""
+    dotToDot.innerHTML = ""
+
     renderResults(result);
     showSlides(slideIndex);
+
 
   })
 
@@ -51,22 +54,28 @@ window.onload = function () {
 
   function renderResults(result) {
 
-    const dotToDot = document.querySelector(".doting");
+    const destinationName = document.createElement('h2')
+    destinationName.innerHTML = `Let's Explore <span> ${cityInput.value} </span> in ${Math.ceil(timeInput.value / 60)} hours! `;
+    resultContainer.append(destinationName);
+
+
     for (let i = 0; i < result.data.results[0].way_points.length; i++) {
       const newElement = document.createElement('span')
       newElement.className = "dot"
       let j = i + 1;
       newElement.onclick = function () { currentSlide(j) }
       dotToDot.append(newElement)
+      resultContainer.append(dotToDot)
     }
-    prevButton.classList = "prev"
+    prevButton.classList = "prev buttons"
     prevButton.innerHTML = "&#10094"
     resultContainer.append(prevButton)
 
 
-    nextButton.classList = "next"
+    nextButton.classList = "next buttons"
     nextButton.innerHTML = "&#10095"
     resultContainer.append(nextButton)
+
 
     for (let i = 0; i < result.data.results[0].way_points.length; i++) {
       const poiName = result.data.results[0].way_points[i].poi.name;
@@ -76,9 +85,8 @@ window.onload = function () {
       const wayPointNumber = i + 1;
       const poiImage = result.data.results[0].way_points[i].poi.images[0].sizes.original.url;
 
-      // create title header h5 element type and assigns class "title-header" to it and adds to the moviecontainer 
       const wayPointTitle = document.createElement('h2')
-      wayPointTitle.className = "text";
+      wayPointTitle.className = "title";
       wayPointTitle.innerHTML = `Stop ${wayPointNumber}: ${poiName}`
 
       const wayPointDetails = document.createElement('p')
