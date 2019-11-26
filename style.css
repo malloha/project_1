@@ -50,7 +50,8 @@ animation: pulse 5s infinite;
 p
 {
   display: inline;
-  font-size: 20px;
+  font-size: 40px;
+  color: #5626C4;
 }
 
 
@@ -165,10 +166,8 @@ img{
 }
 
 
-/* The dots/bullets/indicators */
+/* The dots*/
 .dot {
-  display: inline; 
-
   cursor: pointer;
   height: 20px;
   width: 20px;
@@ -179,20 +178,18 @@ img{
   transition: background-color 0.6s ease;
 }
 .allDots {
-  
   display: flex;
   flex-direction: row;
   cursor: pointer;
   justify-content: center;
   text-align: center;
-  
 }
 
 .active, .dot:hover {
   background-color: #5626C4;
 }
 
-/* Fading animation */
+/* Fading animation for dots and arrows */
 .fade {
   -webkit-animation-name: fade;
   -webkit-animation-duration: 1.5s;
@@ -236,7 +233,6 @@ input {
   margin:5px;
 }
 
-
 button {
   text-transform: capitalize;
   border: 1px solid Grey;
@@ -245,7 +241,6 @@ button {
 }
 form{
   padding-bottom:30px;
-  
 }
 
 @keyframes pulse {
@@ -257,25 +252,21 @@ form{
   }
 }
 
-.trendingAlign>div>div{
-  display:inline;
-}
+
 .trending > div > div>img{
   height: 150px;
   width: 150px;
   margin: 10px;
- 
 }
-.trendAlign>.trendImage > div {
-  height: 250px;
-  width: 250px;
-}
-
 
 .trending > div > div{
-  
-  display: inline;
+  display: inline-block;
   text-align: center;
-
 }
 
+.trendingImage{
+  width: 200px;
+  height:250px;
+  margin: 0px 30px;
+  border: 1px solid #5626C4;
+}

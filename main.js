@@ -38,11 +38,14 @@ window.onload = function () {
 
   function createTrendingCity() {
 
-    let newCityElement = document.createElement('div')
+
     let newCityName = document.createElement('p')
     newCityName.innerHTML = `London`;
+
+    let newCityElement = document.createElement('div')
     newCityElement.className = "trendingImage"
     newCityElement.innerHTML = `<img src="london.jpg">`
+
     newCityElement.append(newCityName)
     trendDisplay.append(newCityElement)
 
@@ -64,7 +67,7 @@ window.onload = function () {
     newCityElement3.append(newCityName3)
 
     trendDisplay.append(newCityElement3)
-    trendingDiv.append(trendDisplay)
+    // trendingDiv.append(trendDisplay)
 
   }
 
