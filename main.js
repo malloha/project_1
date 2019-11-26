@@ -15,6 +15,7 @@ const dotToDot = document.querySelector(".allDots");
 const trendingDiv = document.querySelector(".trending")
 const trendDisplay = document.querySelector(".trendAlign")
 
+
 window.onload = function () {
   const url = `${baseUrl}${cityInput.value}&total_time=${timeInput.value}`;
   createTrendingCity()
@@ -23,27 +24,26 @@ window.onload = function () {
     event.preventDefault()
     let url = `${baseUrl}${cityInput.value}&total_time=${timeInput.value}`;
     //console.log(url)
-
     //axios.get(URL, { headers: { Authorization: AuthStr } })
     const result = await axios.get(url, { headers: { "X-Triposo-Account": 'QGPSD9G3', "X-Triposo-Token": 'tsrpze8uo75pra7bmbbnrenn18mda8st' } });
-    //  console.log(result.data.results[0].way_points[0])
+    console.log(result.error)
     resultContainer.innerHTML = ""
     dotToDot.innerHTML = ""
-
     renderResults(result);
     showSlides(slideIndex);
 
-
   })
 
-  function createTrendingCity() {
 
+
+  function createTrendingCity() {
 
     let newCityName = document.createElement('p')
     newCityName.innerHTML = `London`;
 
     let newCityElement = document.createElement('div')
     newCityElement.className = "trendingImage"
+    newCityName.className = "London"
     newCityElement.innerHTML = `<img src="london.jpg">`
 
     newCityElement.append(newCityName)
@@ -52,6 +52,7 @@ window.onload = function () {
     let newCityElement2 = document.createElement('div')
     let newCityName2 = document.createElement('p')
     newCityName2.innerHTML = `Paris`;
+    newCityName2.className = "Paris"
     newCityElement2.className = "trendingImage"
     newCityElement2.innerHTML = `<img src="paris.jpg">`
     newCityElement2.append(newCityName2)
@@ -62,6 +63,7 @@ window.onload = function () {
     let newCityElement3 = document.createElement('div')
     let newCityName3 = document.createElement('p')
     newCityName3.innerHTML = `Rome`;
+    newCityName3.className = "Rome"
     newCityElement3.className = "trendingImage"
     newCityElement3.innerHTML = `<img src="rome.jpg">`
     newCityElement3.append(newCityName3)
@@ -70,6 +72,48 @@ window.onload = function () {
     // trendingDiv.append(trendDisplay)
 
   }
+
+  const romeButton = document.querySelector(".Rome")
+  const londonButton = document.querySelector(".London")
+  const parisButton = document.querySelector(".Paris")
+
+  romeButton.addEventListener('click', async function () {
+    event.preventDefault()
+    cityInput.value = "Rome";
+    timeInput.value = "100"
+    let url = `${baseUrl}${cityInput.value}&total_time=${timeInput.value}`;
+    const result = await axios.get(url, { headers: { "X-Triposo-Account": 'QGPSD9G3', "X-Triposo-Token": 'tsrpze8uo75pra7bmbbnrenn18mda8st' } });
+    console.log(result.error)
+    resultContainer.innerHTML = ""
+    dotToDot.innerHTML = ""
+    renderResults(result);
+    showSlides(slideIndex);
+  })
+
+  londonButton.addEventListener('click', async function () {
+    event.preventDefault()
+    cityInput.value = "London";
+    timeInput.value = "100"
+    let url = `${baseUrl}${cityInput.value}&total_time=${timeInput.value}`;
+    const result = await axios.get(url, { headers: { "X-Triposo-Account": 'QGPSD9G3', "X-Triposo-Token": 'tsrpze8uo75pra7bmbbnrenn18mda8st' } });
+    console.log(result.error)
+    resultContainer.innerHTML = ""
+    dotToDot.innerHTML = ""
+    renderResults(result);
+    showSlides(slideIndex);
+  })
+  parisButton.addEventListener('click', async function () {
+    event.preventDefault()
+    cityInput.value = "Paris";
+    timeInput.value = "100"
+    let url = `${baseUrl}${cityInput.value}&total_time=${timeInput.value}`;
+    const result = await axios.get(url, { headers: { "X-Triposo-Account": 'QGPSD9G3', "X-Triposo-Token": 'tsrpze8uo75pra7bmbbnrenn18mda8st' } });
+    console.log(result.error)
+    resultContainer.innerHTML = ""
+    dotToDot.innerHTML = ""
+    renderResults(result);
+    showSlides(slideIndex);
+  })
 
 
   // const destinationName = document.createElement('h1')

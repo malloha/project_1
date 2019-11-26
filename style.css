@@ -270,3 +270,26 @@ form{
   margin: 0px 30px;
   border: 1px solid #5626C4;
 }
+
+.Rome {
+  cursor: pointer;
+}
+
+.London {
+  cursor: pointer;
+}
+.Paris {
+  cursor: pointer;
+}
+
+
+.Paris:hover {
+  color: white;
+}
+
+.Rome:hover {
+  color: white;
+}
+.London:hover {
+  color: white;
+}
