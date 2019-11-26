@@ -13,24 +13,37 @@
       #FollowMeTo
     </h1>
   </header>
+
+
+  <div class="slideshow-container">
+    <!-- <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
+      <a class="next" onclick="plusSlides(1)">&#10095;</a> -->
+  </div>
+
+
+  <!-- The dots/circles -->
+  <div class="allDots" style="text-align:center">
+    <!-- <span class="dot" onclick="currentSlide(1)"></span> -->
+  </div>
+
   <form>
     <h2>Enter the Name of a city to create a CityWalk</h2>
     <input type=text value="" name="city" placeholder="Enter City Name" id="city">
     <input type=text value="" placeholder="Enter Time in Minutes" id="time">
     <button type="submit" id="getCity">Create City Walk</button>
+    
+  
+  
   </form>
 
 
-  <div class="slideshow-container">
-    <!-- <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
-    <a class="next" onclick="plusSlides(1)">&#10095;</a> -->
-  </div>
+
+  <div class="trending">
+    Trending City Walks
+    <div class="trendAlign">
+    </div>
 
 
-  <!-- The dots/circles -->
-  <div class="doting" style="text-align:center">
-
-    <!-- <span class="dot" onclick="currentSlide(1)"></span> -->
   </div>
   <script src="main.js" type="text/javascript" charset="utf-8" async defer></script>
   <script src="https://unpkg.com/axios/dist/axios.min.js"></script>

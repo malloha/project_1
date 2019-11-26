@@ -11,10 +11,13 @@ const resultContainer = document.querySelector('.slideshow-container')
 let slideIndex = 1;
 const prevButton = document.createElement('a')
 const nextButton = document.createElement('a')
-const dotToDot = document.querySelector(".doting");
+const dotToDot = document.querySelector(".allDots");
+const trendingDiv = document.querySelector(".trending")
+const trendDisplay = document.querySelector(".trendAlign")
 
 window.onload = function () {
   const url = `${baseUrl}${cityInput.value}&total_time=${timeInput.value}`;
+  createTrendingCity()
 
   button.addEventListener('click', async function () {
     event.preventDefault()
@@ -33,7 +36,37 @@ window.onload = function () {
 
   })
 
+  function createTrendingCity() {
 
+    let newCityElement = document.createElement('div')
+    let newCityName = document.createElement('p')
+    newCityName.innerHTML = `London`;
+    newCityElement.className = "trendingImage"
+    newCityElement.innerHTML = `<img src="london.jpg">`
+    newCityElement.append(newCityName)
+    trendDisplay.append(newCityElement)
+
+    let newCityElement2 = document.createElement('div')
+    let newCityName2 = document.createElement('p')
+    newCityName2.innerHTML = `Paris`;
+    newCityElement2.className = "trendingImage"
+    newCityElement2.innerHTML = `<img src="paris.jpg">`
+    newCityElement2.append(newCityName2)
+
+    trendDisplay.append(newCityElement2)
+
+
+    let newCityElement3 = document.createElement('div')
+    let newCityName3 = document.createElement('p')
+    newCityName3.innerHTML = `Rome`;
+    newCityElement3.className = "trendingImage"
+    newCityElement3.innerHTML = `<img src="rome.jpg">`
+    newCityElement3.append(newCityName3)
+
+    trendDisplay.append(newCityElement3)
+    trendingDiv.append(trendDisplay)
+
+  }
 
 
   // const destinationName = document.createElement('h1')
@@ -129,12 +162,13 @@ window.onload = function () {
     for (let i = 0; i < slides.length; i++) {
       slides[i].style.display = "none";
     }
-    console.log(slides)
+    // console.log(slides)
     for (let i = 0; i < dots.length; i++) {
       dots[i].className = dots[i].className.replace(" active", "");
     }
     slides[slideIndex - 1].style.display = "block";
     dots[slideIndex - 1].className += " active";
   }
+
 
 }
