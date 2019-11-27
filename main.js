@@ -29,11 +29,12 @@ window.onload = function () {
     let errName = "";
     try {
       result = await axios.get(url, { headers: { "X-Triposo-Account": 'QGPSD9G3', "X-Triposo-Token": 'tsrpze8uo75pra7bmbbnrenn18mda8st' } });
+      console.log(result.data.results[0].way_points[0])
     }
     catch (error) {
-      //console.log(error)
+      console.log(error)
       errName = error.name;
-      errorElement.innerHTML = "Invalid Input, Please enter valid values of City(Example: Chicago ) and T again"
+      errorElement.innerHTML = "Invalid Input, Please enter valid values of City(Example: Chicago ) and Time in minutes(60-350 minutes) again"
       showError.append(errorElement)
 
     }
@@ -48,7 +49,7 @@ window.onload = function () {
   })
 
 
-
+  //for trending Cities section
   function createTrendingCity() {
 
     let newCityName = document.createElement('p')
@@ -148,7 +149,7 @@ window.onload = function () {
   function renderResults(result) {
 
     const destinationName = document.createElement('h2')
-    destinationName.innerHTML = `Let's Explore <span> ${cityInput.value} </span> in ${Math.ceil(timeInput.value / 60)} hours! `;
+    destinationName.innerHTML = `Let's Explore <span> ${cityInput.value} </span> in ${Math.floor(timeInput.value / 60)} hours! `;
     resultContainer.append(destinationName);
 
 
@@ -175,8 +176,26 @@ window.onload = function () {
       const poiDescription = result.data.results[0].way_points[i].poi.snippet;
       const walkToNextDistance = result.data.results[0].way_points[i].walk_to_next_distance;
       const walkToNextDuration = result.data.results[0].way_points[i].walk_to_next_duration;
+      const poiLinks = result.data.results[0].way_points[i].poi.attribution;
+      const visitTime = result.data.results[0].way_points[i].visit_time;
       const wayPointNumber = i + 1;
       const poiImage = result.data.results[0].way_points[i].poi.images[0].sizes.original.url;
+      let poiMap = ""
+      let poiWiki = ""
+
+      for (let i = 0; i < poiLinks.length; i++) {
+
+        if (poiLinks[i].source_id == "openstreetmap") {
+          poiMap = poiLinks[i].url;
+        }
+        if (poiLinks[i].source_id == "wikipedia") {
+          poiWiki = poiLinks[i].url;
+        }
+      }
+
+      const linkVar = `OpenStreetMap ${poiMap} wki ${poiWiki}`
+      console.log(linkVar)
+
 
       const wayPointTitle = document.createElement('h2')
       wayPointTitle.className = "title";
@@ -184,7 +203,7 @@ window.onload = function () {
 
       const wayPointDetails = document.createElement('p')
       wayPointDetails.className = "text";
-      wayPointDetails.innerHTML = `Description: ${poiDescription}, Distance to next Stop: ${walkToNextDistance}m, Walking Timt to next Stop: ${walkToNextDuration} mins`
+      wayPointDetails.innerHTML = `Description: ${poiDescription}, Distance to next Stop: ${walkToNextDistance}m, Walking Time to next Stop: ${walkToNextDuration} mins, Visit Time ${visitTime} mins`
       const wayPointImage = document.createElement('img')
       wayPointImage.src = `${poiImage}`;
 
@@ -192,12 +211,27 @@ window.onload = function () {
       wayPointOrder.className = "numbertext"
       wayPointOrder.innerHTML = `${wayPointNumber} / ${result.data.results[0].way_points.length}`
 
+
+      const wayPointLinks = document.createElement('div');
+
+      const wikiLink = document.createElement('a')
+      wikiLink.innerHTML = poiWiki
+      wikiLink.href = `${poiWiki}`;
+
+      const mapLink = document.createElement('a')
+      mapLink.innerHTML = poiMap
+      mapLink.href = poiMap;
+
+      wayPointLinks.append(mapLink)
+      wayPointLinks.append(wikiLink)
+
       const wayPoint = document.createElement('div')
       wayPoint.classList.add("mySlides")
       wayPoint.classList.add("fade")
       wayPoint.append(wayPointTitle);
       wayPoint.append(wayPointImage);
       wayPoint.append(wayPointDetails)
+      wayPoint.append(wayPointLinks)
       wayPoint.append(wayPointOrder)
       resultContainer.append(wayPoint)
 
