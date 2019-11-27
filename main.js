@@ -40,12 +40,12 @@ window.onload = function () {
     let errName = "";
     try {
       result = await axios.get(url, { headers: { "X-Triposo-Account": 'QGPSD9G3', "X-Triposo-Token": 'tsrpze8uo75pra7bmbbnrenn18mda8st' } });
-      console.log(result.data.results[0].way_points[0])
+      //console.log(result.data.results[0].way_points[0])
     }
     catch (error) {
-      console.log(error)
+      //console.log(error)
       errName = error.name;
-      errorElement.innerHTML = `<p>Invalid Input, Please enter valid values of City(Example: Chicago ) and Time in minutes(60-350 minutes) again</p>`
+      errorElement.innerHTML = `<p class="errorClass">Invalid Input: Please enter valid values of City(Example: Chicago ) and Time in minutes(60-350 minutes) again</p>`
       showError.append(errorElement)
 
     }
@@ -104,11 +104,16 @@ window.onload = function () {
 
   romeButton.addEventListener('click', async function () {
     event.preventDefault()
+
+
+
+
     cityInput.value = "Rome";
     timeInput.value = "100"
     let url = `${baseUrl}${cityInput.value}&total_time=${timeInput.value}`;
     const result = await axios.get(url, { headers: { "X-Triposo-Account": 'QGPSD9G3', "X-Triposo-Token": 'tsrpze8uo75pra7bmbbnrenn18mda8st' } });
-    console.log(result.error)
+
+    errorElement.innerHTML = ""
     resultContainer.innerHTML = ""
     dotToDot.innerHTML = ""
     renderResults(result);
@@ -121,7 +126,8 @@ window.onload = function () {
     timeInput.value = "100"
     let url = `${baseUrl}${cityInput.value}&total_time=${timeInput.value}`;
     const result = await axios.get(url, { headers: { "X-Triposo-Account": 'QGPSD9G3', "X-Triposo-Token": 'tsrpze8uo75pra7bmbbnrenn18mda8st' } });
-    console.log(result.error)
+
+    errorElement.innerHTML = ""
     resultContainer.innerHTML = ""
     dotToDot.innerHTML = ""
     renderResults(result);
@@ -133,7 +139,8 @@ window.onload = function () {
     timeInput.value = "100"
     let url = `${baseUrl}${cityInput.value}&total_time=${timeInput.value}`;
     const result = await axios.get(url, { headers: { "X-Triposo-Account": 'QGPSD9G3', "X-Triposo-Token": 'tsrpze8uo75pra7bmbbnrenn18mda8st' } });
-    console.log(result.error)
+
+    errorElement.innerHTML = ""
     resultContainer.innerHTML = ""
     dotToDot.innerHTML = ""
     renderResults(result);
@@ -160,7 +167,7 @@ window.onload = function () {
   function renderResults(result) {
 
     const destinationName = document.createElement('h2')
-    destinationName.innerHTML = `Let's Explore <span> ${cityInput.value} </span> in ${Math.floor(timeInput.value / 60)} hours! `;
+    destinationName.innerHTML = `Let's Explore <span class="city"> ${cityInput.value} </span> in ${timeInput.value} minutes! `;
     resultContainer.append(destinationName);
 
 
@@ -193,7 +200,7 @@ window.onload = function () {
 
 
       const poiImage = result.data.results[0].way_points[i].poi.images[0].sizes.original.url;
-      console.log(poiImage)
+      // console.log(poiImage)
 
       let poiMap = ""
       let poiWiki = ""
@@ -218,7 +225,7 @@ window.onload = function () {
 
       const wayPointDetails = document.createElement('p')
       wayPointDetails.className = "text";
-      wayPointDetails.innerHTML = `Description: ${poiDescription}, Distance to next Stop: ${walkToNextDistance}m, Walking Time to next Stop: ${walkToNextDuration} mins, Visit Time ${visitTime} mins`
+      wayPointDetails.innerHTML = `<span>Description:</span> ${poiDescription} <span>Distance to next Stop:</span> ${walkToNextDistance}m <span> Walking Time to next Stop:</span> ${walkToNextDuration} mins <span> Visit Time</span> ${visitTime} mins`
       const wayPointImage = document.createElement('img')
       wayPointImage.src = `${poiImage}`;
 
