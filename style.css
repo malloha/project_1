@@ -293,3 +293,8 @@ form{
 .London:hover {
   color: white;
 }
+
+
+#getCity{
+  cursor: pointer;
+}

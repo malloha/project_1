@@ -14,8 +14,9 @@ const nextButton = document.createElement('a')
 const dotToDot = document.querySelector(".allDots");
 const trendingDiv = document.querySelector(".trending")
 const trendDisplay = document.querySelector(".trendAlign")
-
-
+const showError = document.querySelector('.inputForm')
+let errorElement = document.createElement("div")
+let result;
 window.onload = function () {
   const url = `${baseUrl}${cityInput.value}&total_time=${timeInput.value}`;
   createTrendingCity()
@@ -25,13 +26,25 @@ window.onload = function () {
     let url = `${baseUrl}${cityInput.value}&total_time=${timeInput.value}`;
     //console.log(url)
     //axios.get(URL, { headers: { Authorization: AuthStr } })
-    const result = await axios.get(url, { headers: { "X-Triposo-Account": 'QGPSD9G3', "X-Triposo-Token": 'tsrpze8uo75pra7bmbbnrenn18mda8st' } });
-    console.log(result.error)
-    resultContainer.innerHTML = ""
-    dotToDot.innerHTML = ""
-    renderResults(result);
-    showSlides(slideIndex);
+    let errName = "";
+    try {
+      result = await axios.get(url, { headers: { "X-Triposo-Account": 'QGPSD9G3', "X-Triposo-Token": 'tsrpze8uo75pra7bmbbnrenn18mda8st' } });
+    }
+    catch (error) {
+      //console.log(error)
+      errName = error.name;
+      errorElement.innerHTML = "Invalid Input, Please enter valid values of City(Example: Chicago ) and T again"
+      showError.append(errorElement)
 
+    }
+
+    if (errName == "") {
+      errorElement.innerHTML = ""
+      resultContainer.innerHTML = ""
+      dotToDot.innerHTML = ""
+      renderResults(result);
+      showSlides(slideIndex);
+    }
   })
 
 
@@ -171,7 +184,7 @@ window.onload = function () {
 
       const wayPointDetails = document.createElement('p')
       wayPointDetails.className = "text";
-      wayPointDetails.innerHTML = `Description: ${poiDescription}, Walk to Next Distance: ${walkToNextDistance}m, Walk to Next Duration: ${walkToNextDuration} mins`
+      wayPointDetails.innerHTML = `Description: ${poiDescription}, Distance to next Stop: ${walkToNextDistance}m, Walking Timt to next Stop: ${walkToNextDuration} mins`
       const wayPointImage = document.createElement('img')
       wayPointImage.src = `${poiImage}`;
 
