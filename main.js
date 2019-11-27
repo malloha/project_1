@@ -17,12 +17,23 @@ const trendDisplay = document.querySelector(".trendAlign")
 const showError = document.querySelector('.inputForm')
 let errorElement = document.createElement("div")
 let result;
+
+
+
 window.onload = function () {
+
   const url = `${baseUrl}${cityInput.value}&total_time=${timeInput.value}`;
   createTrendingCity()
 
   button.addEventListener('click', async function () {
     event.preventDefault()
+    let cityString = cityInput.value;
+    cityString = cityString.split(' ')
+    for (let i = 0; i < cityString.length; i++) {
+      const upperCase = cityString[i].charAt(0).toUpperCase() + cityString[i].substring(1);
+      cityString[i] = upperCase;
+    }
+    cityInput.value = cityString.join("_")
     let url = `${baseUrl}${cityInput.value}&total_time=${timeInput.value}`;
     //console.log(url)
     //axios.get(URL, { headers: { Authorization: AuthStr } })
@@ -34,7 +45,7 @@ window.onload = function () {
     catch (error) {
       console.log(error)
       errName = error.name;
-      errorElement.innerHTML = "Invalid Input, Please enter valid values of City(Example: Chicago ) and Time in minutes(60-350 minutes) again"
+      errorElement.innerHTML = `<p>Invalid Input, Please enter valid values of City(Example: Chicago ) and Time in minutes(60-350 minutes) again</p>`
       showError.append(errorElement)
 
     }
@@ -179,7 +190,11 @@ window.onload = function () {
       const poiLinks = result.data.results[0].way_points[i].poi.attribution;
       const visitTime = result.data.results[0].way_points[i].visit_time;
       const wayPointNumber = i + 1;
+
+
       const poiImage = result.data.results[0].way_points[i].poi.images[0].sizes.original.url;
+      console.log(poiImage)
+
       let poiMap = ""
       let poiWiki = ""
 
@@ -194,7 +209,7 @@ window.onload = function () {
       }
 
       const linkVar = `OpenStreetMap ${poiMap} wki ${poiWiki}`
-      console.log(linkVar)
+
 
 
       const wayPointTitle = document.createElement('h2')

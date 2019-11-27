@@ -1,44 +1,3 @@
-/* .results-container{
-  height: 500px;
- width: 500px;  
-
-  border: 3px solid black;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-
-}
-
-span{
-font-size: 50px; 
-}
-
-
-
-div{
-  flex-direction: column;
-  align-items: center;
- justify-content: space-between;
- border: 3px solid yellow;
- width: max-content;
-}
-
-img{
-  width: 500px;
-  height: 300px;
-  align-items: center;
-}
-
-
-p{
-  color: navy;
-  align-items: center;
-}
-li{
-  list-style-type: none;
-  align-items: center;
-} */
-
 header{
   background-color:#FACD3D;
   width: 1021004px;
@@ -46,13 +5,6 @@ text-align: center;
 animation: pulse 5s infinite;
 }
 
-
-p
-{
-  display: inline;
-  font-size: 40px;
-  color: #5626C4;
-}
 
 
 
@@ -68,10 +20,13 @@ p
   width: 600px; 
  /* position: absolute;  */
   margin-top: 30px;
-  background-color: rgb(250, 205, 61, 0.5);
+  background-color: rgb(202, 231, 223,0.1);
   /* border: 2px solid black; */
 }
-
+header>h1:hover{
+  color: white;
+  cursor: pointer;
+}
 img{
   width: 100%;
   height: 400px;
@@ -122,20 +77,17 @@ img{
 
 /* Caption text */
 .text {
-  color: #5626C4;
+  color: #EE7879;
   font-size: 15px;
   /* padding: 8px 12px;
   position: absolute; */
   /* bottom: 8px; */
   width: 100%;
   text-align: center;
-  background-color: rgba(115, 106, 241, 0.4);
+  /* background-color: rgba(115, 106, 241, 0.4); */
 }
-
-
-
 .title {
-  color: #5626C4;
+   color: #CAE7DF; 
   font-size: 30px;
   /* padding: 8px 12px;
   position: absolute; */
@@ -150,15 +102,15 @@ img{
   padding-top: 30px;
   height: 400px;
   width: 100%;
-  background-color: rgb(44, 204, 195, 0.6);
+  background-color: #CAE7DF;
   text-align: center;
-  color: #FACD3D;
+  color: #EE7879;
   font-size: 50px;
 }
 
-/* Number text (1/3 etc) */
+/* Number text for image slider */
 .numbertext {
-  color: rgba(115, 106, 241);
+  color: #EE7879;
   font-size: 12px;
   /* padding: 8px 12px; */
   /* position: absolute; */
@@ -166,7 +118,7 @@ img{
 }
 
 
-/* The dots*/
+/* The dots on slider*/
 .dot {
   cursor: pointer;
   height: 20px;
@@ -174,7 +126,6 @@ img{
   margin: 0 2px;
   background-color: #bbb;
   border-radius: 50%;
-
   transition: background-color 0.6s ease;
 }
 .allDots {
@@ -186,7 +137,7 @@ img{
 }
 
 .active, .dot:hover {
-  background-color: #5626C4;
+  background-color: #F4ABAA;
 }
 
 /* Fading animation for dots and arrows */
@@ -206,14 +157,24 @@ img{
   from {opacity: .4}
   to {opacity: 1}
 }
+
+/* display color for links */
 div> a{
-  display: block;
-  background-color: rgba(115, 106, 241, 0.4);
+  display: flex;
+  flex-direction: column;
+  cursor: pointer;
+  flex-wrap: wrap;
+  color: #EE7879
+  /* background-color: rgba(202, 231, 223, 0.4) */
 }
+
+div>a:hover {
+  color: white;}
+
 
 body{
   font-family: 'Fjalla One', sans-serif;
-  background-color: lightgray;
+  background-color: #2A3166;
   display: flex;
   flex-direction: column;
   align-items: center; 
@@ -223,10 +184,10 @@ body{
 
 h1{
   
-  color: #5626C4;
+  color: #2A3166;
 }
 h2{
-  color: #2CCCC3;
+  color: #EE7879;
   align-items: center;
   text-align: center;
 }
@@ -240,21 +201,25 @@ input {
 }
 
 button {
-  text-transform: capitalize;
   border: 1px solid white;
-  background-color: #FACD3D;
+  background-color: #EE7879;
   padding: 5px;
+  text-align: center;
+
 }
 form{
-  padding-bottom:30px;
+  padding-bottom:15px;
+  border: 1px solid black;
+  text-align: center;
+
 }
 
 @keyframes pulse {
   0% {
-    background-color: #FACD3D;
+    background-color: #EE7879;
   }
   100% {
-    background-color: rgb(255, 145, 0);
+    background-color: #F4ABAA;
   }
 }
 
@@ -299,4 +264,10 @@ form{
 }
 #getCity{
   cursor: pointer;
+}
+
+p{
+  font-size: 15px;
+  text-align: center;
+  color: #EE7879;
 }
