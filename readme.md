@@ -5,7 +5,7 @@ Description : #FollowMeTo helps you plan to explore a city on foot by creating 
 
 WireFrame:
 
-![ here is my wireframe] (https://docdro.id/9UmnBPd)
+![here is my wireframe] (https://docdro.id/9UmnBPd)
 
 
 API : Triposo API
@@ -27,3 +27,8 @@ Features 
 Stretch goals 
 1. Display the route on google Maps or some sort of Map
 2. Add options to search restaurants and sight seeing places in a city
+
+Improvements:
+1. Add default image for missing images
+2. Move arrow buttons on the pictures
+3. Add media queries, make the website responsive

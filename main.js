@@ -105,9 +105,6 @@ window.onload = function () {
   romeButton.addEventListener('click', async function () {
     event.preventDefault()
 
-
-
-
     cityInput.value = "Rome";
     timeInput.value = "100"
     let url = `${baseUrl}${cityInput.value}&total_time=${timeInput.value}`;

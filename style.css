@@ -63,7 +63,7 @@ img{
 
 .errorClass{
   color: red;
-  background-color: #CAE7DF;
+  background-color: #2A3166;
 }
 
 /* Position the "next button" to the right */
@@ -282,6 +282,7 @@ p{
   font-size: 15px;
   text-align: center;
   color: #EE7879;
+  
 }
 
 span{
